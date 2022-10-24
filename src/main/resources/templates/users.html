@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="usersList" type="java.util.List<com.mytests.springboot.defaultthymeleaftest1.User>"*/-->
+<head>
+    <meta charset="UTF-8">
+    <title>users</title>
+</head>
+<body>
+
+<table th:if="${not #lists.isEmpty(users)}" xmlns:th="http://www.thymeleaf.org">
+  <thead>
+  <tr>
+    <th><b>Name</b></th>
+    <th><b>Age</b></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="user : ${usersList}">
+    <td th:text="${user.name}"></td>
+    <td th:text="${user.age}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
