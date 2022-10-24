@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!--/*@thymesVar id="usersList" type="java.util.List<com.mytests.springboot.defaultthymeleaftest1.User>"*/-->
+<!--/*@thymesVar id="usersList" type="java.util.List<com.mytests.thymeleaf.thymeleafvars.User>"*/-->
+<!--/*@thymesVar id="stringMap" type="java.util.Map<java.lang.String, java.lang.String>"*/-->
+<!--/*@thymesVar id="usersMap" type="java.util.Map<java.lang.String,com.mytests.thymeleaf.thymeleafvars.User>"*/-->
+<!--/*@thymesVar id="nestedLists" type="java.util.List<com.mytests.thymeleaf.thymeleafvars.Team>"*/-->
 <head>
-    <meta charset="UTF-8">
-    <title>users</title>
+  <meta charset="UTF-8">
+  <title>users</title>
 </head>
 <body>
-
-<table th:if="${not #lists.isEmpty(users)}" xmlns:th="http://www.thymeleaf.org">
+<h3>Lists:</h3>
+<h4>lists of POJO:</h4>
+<table th:if="${not #lists.isEmpty(usersList)}" xmlns:th="http://www.thymeleaf.org">
   <thead>
   <tr>
     <th><b>Name</b></th>
@@ -21,5 +25,38 @@
   </tr>
   </tbody>
 </table>
+<h4>Lists of Lists of POJO:</h4>
+<th:block th:each="team: ${nestedLists}">
+  <p th:text="${team.team_name}"/>
+  <ul th:each="member: ${team.members}">
+    <li th:text="${member.name}"/>
+  </ul>
+</th:block>
+<h3>Maps:</h3>
+<h4>string,string</h4>
+<p th:text="${stringMap.get('key1').toUpperCase()}"></p>
+<p th:text="${stringMap['key2'].toUpperCase()}"></p>
+<h4>string,User</h4>
+<p th:text="${usersMap.get('u1').name.toUpperCase()}"></p>
+<p th:text="${usersMap['u2'].name.toUpperCase()}"></p>
+<h4>iteration by map:</h4>
+<ul th:each="user : ${usersMap}">
+  <li th:text="${user.key}+': '+${user.value.name}"></li>
+</ul>
+<ul>
+  <li th:each="key: ${usersMap.keySet()}">
+    <span th:text="${key}"></span> = <span th:text="${usersMap.get(key)}"></span>
+  </li>
+</ul>
+<div th:include="::f1(${nestedLists})"></div>
+<!--/*@thymesVar id="teams" type="java.util.List<com.mytests.thymeleaf.thymeleafvars.Team>"*/-->
+<th:block th:fragment="f1(teams)">
+  <th:block th:each="team: ${teams}">
+    <p th:text="${team.team_name}"/>
+    <ul th:each="member: ${team.members}">
+      <li th:text="${member.name}"/>
+    </ul>
+  </th:block>
+</th:block>
 </body>
 </html>
