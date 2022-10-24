@@ -48,6 +48,7 @@
     <span th:text="${key}"></span> = <span th:text="${usersMap.get(key)}"></span>
   </li>
 </ul>
+<h3>Fragment parameters type:</h3>
 <div th:include="::f1(${nestedLists})"></div>
 <!--/*@thymesVar id="teams" type="java.util.List<com.mytests.thymeleaf.thymeleafvars.Team>"*/-->
 <th:block th:fragment="f1(teams)">
