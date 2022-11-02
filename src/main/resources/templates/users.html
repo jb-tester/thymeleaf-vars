@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!--/*@thymesVar id="usersList" type="java.util.List<com.mytests.thymeleaf.thymeleafvars.User>"*/-->
 <!--/*@thymesVar id="stringMap" type="java.util.Map<java.lang.String, java.lang.String>"*/-->
 <!--/*@thymesVar id="usersMap" type="java.util.Map<java.lang.String,com.mytests.thymeleaf.thymeleafvars.User>"*/-->
 <!--/*@thymesVar id="nestedLists" type="java.util.List<com.mytests.thymeleaf.thymeleafvars.Team>"*/-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>users</title>
@@ -59,5 +59,8 @@
     </ul>
   </th:block>
 </th:block>
+<p>********************************************</p>
+<div th:include="external_fragment"></div>
+<p>********************************************</p>
 </body>
 </html>

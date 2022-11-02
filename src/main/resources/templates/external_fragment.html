@@ -1,0 +1,19 @@
+<!--/*@thymesVar id="usersList" type="java.util.List<com.mytests.thymeleaf.thymeleafvars.User>"*/-->
+<!--/*@thymesVar id="message" type="com.mytests.thymeleaf.thymeleafvars.Message"*/-->
+<p th:text="${message.greeting}"></p>
+<table th:if="${not #lists.isEmpty(usersList)}">
+    <thead>
+    <tr>
+        <th><b>Name</b></th>
+        <th><b>Age</b></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user:${usersList}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.age}"></td>
+    </tr>
+    </tbody>
+
+</table>
+<p th:text="${usersList.get(0).name}"></p>

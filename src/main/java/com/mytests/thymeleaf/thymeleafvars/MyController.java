@@ -22,6 +22,7 @@ public class MyController {
         model.addAttribute("usersMap", userMap());
         model.addAttribute("stringMap", stringMap());
         model.addAttribute("nestedLists", nestedLists());
+        model.addAttribute("message", new Message("hello"));
     }
     private List<User> listUsers(){
         List<User> list=new ArrayList<>();
