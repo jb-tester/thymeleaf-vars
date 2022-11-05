@@ -1,7 +1,3 @@
-<!--/*@thymesVar id="usersList" type="java.util.List<com.mytests.thymeleaf.thymeleafvars.User>"*/-->
-<!--/*@thymesVar id="stringMap" type="java.util.Map<java.lang.String, java.lang.String>"*/-->
-<!--/*@thymesVar id="usersMap" type="java.util.Map<java.lang.String,com.mytests.thymeleaf.thymeleafvars.User>"*/-->
-<!--/*@thymesVar id="nestedLists" type="java.util.List<com.mytests.thymeleaf.thymeleafvars.Team>"*/-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -45,7 +41,7 @@
 </ul>
 <ul>
   <li th:each="key: ${usersMap.keySet()}">
-    <span th:text="${key}"></span> = <span th:text="${usersMap.get(key)}"></span>
+    <span th:text="${key}"></span> = <span th:text="${usersMap.get(key).getName()}"></span>
   </li>
 </ul>
 <h3>Fragment parameters type:</h3>

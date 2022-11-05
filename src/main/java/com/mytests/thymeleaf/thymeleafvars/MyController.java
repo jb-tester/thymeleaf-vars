@@ -14,8 +14,9 @@ public class MyController {
 
     @RequestMapping("/")
     public String home(ModelMap model) {
-       populateModel(model);
-        return "users";
+       //populateModel(model);
+       // return "users";
+        return populateModelAndReturnView(model);
     }
     private void populateModel(ModelMap model){
         model.addAttribute("usersList", listUsers());
@@ -23,6 +24,14 @@ public class MyController {
         model.addAttribute("stringMap", stringMap());
         model.addAttribute("nestedLists", nestedLists());
         model.addAttribute("message", new Message("hello"));
+    }
+    private String populateModelAndReturnView(ModelMap model){
+        model.addAttribute("usersList", listUsers());
+        model.addAttribute("usersMap", userMap());
+        model.addAttribute("stringMap", stringMap());
+        model.addAttribute("nestedLists", nestedLists());
+        model.addAttribute("message", new Message("hello"));
+        return "users";
     }
     private List<User> listUsers(){
         List<User> list=new ArrayList<>();
